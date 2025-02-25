@@ -1,14 +1,5 @@
 name: "FibBot"
 description: "Extracts numbers from PRs and computes Fibonacci sequences"
-inputs:
-  enable_fib:
-    description: "Enable Fibonacci calculation"
-    required: true
-    default: "true"
-  max_threshold:
-    description: "Maximum Fibonacci number limit"
-    required: false
-    default: "100"
 runs:
   using: "docker"
   image: "Dockerfile"
