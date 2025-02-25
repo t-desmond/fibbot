@@ -1,5 +1,5 @@
 name: "FibBot"
-description: "prints hello world"
+description: "prints first and second arguments passed to fibbot"
 inputs:
   enable_fib:
     description: "defines whether fibbot is enabled or not"

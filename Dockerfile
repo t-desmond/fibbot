@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN echo "$1 and $2" >> $GITHUB_OUTPUT
+# RUN echo "$1 and $2" >> $GITHUB_OUTPUT
 
 RUN cargo build --release
 
