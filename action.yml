@@ -2,13 +2,16 @@ name: "FibBot"
 description: "prints hello world"
 inputs:
   enable_fib:
-    description: 'defines whether fibbot is enabled or not'
+    description: "defines whether fibbot is enabled or not"
     required: true
-    default: 'no'
+    default: "no"
   max_threshold:
-    description: 'defines the max number fibbot will compute'
+    description: "defines the max number fibbot will compute"
     required: true
-    default: '100'
+    default: "100"
+outputs:
+  inputs:
+    description: "prints output to logs"
 runs:
   using: "docker"
   image: "Dockerfile"

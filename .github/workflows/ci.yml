@@ -5,7 +5,14 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: checkout code
+        uses: actions/checkout@v4
       - name: Run FibBot
+        id: inputs
         uses: ./
-  
+        with:
+          enable_fib: true
+          max_threshold: '500'
+
+      - name: display output
+        run: echo "The inputs are ${{ steps.inputs.outputs.argument_1 }} and ${{ steps.inputs.outputs.argument_2 }}"
