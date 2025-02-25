@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN cargo run
+RUN cargo build --release
 
-# CMD ["./target/release/fibbot"]
+ENTRYPOINT ["/app/target/release/fibbot"]
