@@ -26,4 +26,6 @@ jobs:
         run: cargo test --verbose
 
       - name: Run the application
-        run: cargo run
+        run: ./target/release/fibbot
+
+      
