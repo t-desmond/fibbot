@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN cargo run
+RUN cargo build
 
-# CMD ["./target/release/fibbot"]
+CMD ["./target/debug/fibbot"]
