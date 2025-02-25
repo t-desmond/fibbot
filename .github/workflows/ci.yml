@@ -11,8 +11,8 @@ jobs:
         id: inputs
         uses: ./
         with:
-          enable_fib: true
-          max_threshold: '500'
+          enable_fib: false
+          max_threshold: '10000'
 
       - name: display output
         run: echo "The inputs are ${{ steps.inputs.outputs.argument_1 }} and ${{ steps.inputs.outputs.argument_2 }}"
