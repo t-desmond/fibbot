@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN cargo self-update
+
 RUN cargo build --release
 
 CMD ["./target/release/fibbot"]
