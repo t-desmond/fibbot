@@ -3,4 +3,3 @@ description: "prints hello world"
 runs:
   using: "docker"
   image: "Dockerfile"
-  run: ["./target/release/fibbot"]
