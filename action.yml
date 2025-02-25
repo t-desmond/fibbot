@@ -1,0 +1,5 @@
+name: "fibbot"
+description: "Prints hello world when executed"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
