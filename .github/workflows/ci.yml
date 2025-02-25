@@ -14,5 +14,5 @@ jobs:
           enable_fib: false
           max_threshold: '10000'
 
-      - name: display output
-        run: echo "The inputs are ${{ steps.inputs.outputs.enable_fib }} and ${{ steps.inputs.outputs.max_threshold }}"
+      # - name: display output
+      #   run: echo "The inputs are ${{ steps.inputs.outputs.enable_fib }} and ${{ steps.inputs.outputs.max_threshold }}"
