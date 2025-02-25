@@ -1,5 +1,5 @@
 name: "FibBot"
-description: "Extracts numbers from PRs and computes Fibonacci sequences"
+description: "prints hello world"
 runs:
   using: "docker"
   image: "Dockerfile"
