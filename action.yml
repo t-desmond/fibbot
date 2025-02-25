@@ -1,5 +1,17 @@
 name: "FibBot"
 description: "prints hello world"
+inputs:
+  enable_fib:
+    description: 'defines whether fibbot is enabled or not'
+    required: true
+    default: 'no'
+  max_threshold:
+    description: 'defines the max number fibbot will compute'
+    required: true
+    default: '100'
 runs:
   using: "docker"
   image: "Dockerfile"
+  args:
+    - ${{ inputs.enable_fib }}
+    - ${{ inputs.max_threshold }}
