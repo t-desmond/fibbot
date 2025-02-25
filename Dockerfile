@@ -1,9 +1,9 @@
 FROM rust:1.75
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY . .
+COPY . /app
 
 RUN cargo build
 
-CMD ["./target/debug/fibbot"]
+CMD ["/app/target/debug/fibbot"]
