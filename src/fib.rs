@@ -1,10 +1,10 @@
 use num_bigint::{BigInt, ToBigInt};
 
 #[derive(Debug)]
-pub struct Factorial;
+pub struct Fibbonacci;
 
-impl Factorial {
-    fn fibbo(num: BigInt) -> BigInt {
+impl Fibbonacci {
+    pub fn fibbo(num: BigInt) -> BigInt {
       let mut previous_number: BigInt = 1.to_bigint().unwrap();
       let mut current_number: BigInt = 0.to_bigint().unwrap();
       
