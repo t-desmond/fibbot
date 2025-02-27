@@ -1,17 +1,22 @@
 name: "FibBot"
 description: "prints first and second arguments passed to fibbot"
+
 inputs:
+
   enable_fib:
     description: "defines whether fibbot is enabled or not"
     required: true
     default: false
+
   max_threshold:
     description: "defines the max number fibbot will compute"
     required: true
     default: "100"
-outputs:
-  inputs:
-    description: "prints output to logs"
+
+# outputs:
+#   results:
+#     description: "prints output to logs"
+
 runs:
   using: "docker"
   image: "Dockerfile"
