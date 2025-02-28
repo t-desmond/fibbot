@@ -39,7 +39,7 @@ async fn main() ->  Result<(), Box<dyn std::error::Error>>{
         println!("{:?}", numbers);
 
         let comment_body = format!("{:?}", numbers);
-        manage_pr::PullRequest::post_comment_to_pr(github_token.as_str(), owner, repo, 1, comment_body.as_str()).await?;
+        manage_pr::PullRequest::post_comment_to_pr( comment_body.as_str()).await?;
     } else {
         println!("fibbot disabled...")
     }
