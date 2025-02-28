@@ -11,5 +11,5 @@ impl GetNumbers {
           }
       }
       result
-    }
+    } 
 }
