@@ -13,6 +13,14 @@ inputs:
     required: true
     default: "100"
 
+    pr_number:
+      description: "The number of the pull request"
+      required: true
+
+    githun_token:
+      description: "GitHub token to interact with GitHub API"
+      required: true
+
 # outputs:
 #   results:
 #     description: "prints output to logs"
@@ -23,3 +31,10 @@ runs:
   args:
     - ${{ inputs.enable_fib }}
     - ${{ inputs.max_threshold }}
+
+    - name: Run FibBot
+      run: |
+        export PR_NUMBER="${{ inputs.pr_number }}"
+        export GITHUB_TOKEN="${{ inputs.github_token }}"
+       # ./target/release/fibbot "${{ inputs.enable_fib }}" "${{ inputs.max_threshold }}"
+      shell: bash

@@ -1,10 +1,8 @@
-FROM rust:1.75
+FROM rust:1.81.0
 
 WORKDIR /app
 
 COPY . .
-
-# RUN echo "$1 and $2" >> $GITHUB_OUTPUT
 
 RUN cargo build --release
 
