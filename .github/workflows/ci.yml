@@ -26,9 +26,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: get pr number
+      - name: Get PR number
         run: |
-          echo "pr number: ${{ github.event.pull_request.number }}"
+          echo "GitHub Event: ${{ toJson(github.event) }}"
+          echo "PR Number: ${{ github.event.pull_request.number }}"
           echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
 
       - name: Run FibBot
