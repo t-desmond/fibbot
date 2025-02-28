@@ -1,5 +1,12 @@
 name: "Run FibBot Action"
-on: [push]
+on:
+  push:
+    branch:
+      - main
+      - cli-pr
+  pull_request:
+    types: [opened, synchronize, reopened]
+
 
 permissions:
   pull-requests: write
