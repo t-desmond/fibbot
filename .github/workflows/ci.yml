@@ -1,9 +1,5 @@
 name: "Run FibBot Action"
 on:
-  push:
-    branch:
-      - main
-      - cli-pr
   pull_request:
     types: [opened, synchronize, reopened]
 
