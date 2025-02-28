@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      actions: read|write|none
-      pull-requests: read|write|none
+      actions: read
+      pull-requests: write
 
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
       - name: Run FibBot
         id: result
@@ -19,5 +19,5 @@ jobs:
           enable_fib: true
           max_threshold: '100'
 
-      # - name: display output
+      # - name: Display output
       #   run: echo "The inputs are ${{ steps.result.outputs.enable_fib }} and ${{ steps.result.outputs.max_threshold }}"
