@@ -1,10 +1,8 @@
-use regex::Regex;
-
 pub struct GetNumbers;
 
 impl GetNumbers {
-    pub fn extract_numbers(pr_description: &str) -> Vec<u32> {
-      let txt_vec: Vec<String> = pr_description.split_whitespace().map(String::from).collect();
+    pub fn extract_numbers(pr_content: &str) -> Vec<u32> {
+      let txt_vec: Vec<String> = pr_content.split_whitespace().map(String::from).collect();
 
       let mut result: Vec<u32> = Vec::new();
       for i in txt_vec{
