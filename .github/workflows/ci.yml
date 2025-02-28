@@ -23,11 +23,9 @@ jobs:
       
       - name: Get PR number
         run: |
-          echo "GitHub Event: ${{ toJson(github.event) }}"
-          
           if [[ -n "${{ github.event.pull_request }}" ]]; then
             echo "PR Number: ${{ github.event.pull_request.number }}"
-            echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
           else
             echo "No pr found."
           fi
@@ -39,5 +37,5 @@ jobs:
           enable_fib: true
           max_threshold: '100'
         env:
-          pr_number: ${{ env.pr_number }}  # Use the value from the previous step
+          pr_number: ${{ env.pr_number }}  
           githun_token: ${{ secrets.GITHUB_TOKEN }}
