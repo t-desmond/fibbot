@@ -18,15 +18,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
+      - name: get pr number
+        run: |
+          echo "pr number: ${{ github.event.pull_request.number }}"
+          echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+
       - name: Run FibBot
         id: result
         uses: ./
         with:
-          pr_number: ${{ github.event.pull_request.number }}
           enable_fib: true
           max_threshold: '100'
+        env:
+          pr_number: ${{ github.event.pull_request.number }}
           githun_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Display output
-      #   run: echo "The inputs are ${{ steps.result.outputs.enable_fib }} and ${{ steps.result.outputs.max_threshold }}"
