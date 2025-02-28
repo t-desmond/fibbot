@@ -1,39 +1,22 @@
-name: "Run FibBot Action"
+name: PR Workflow
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-
-permissions:
-  pull-requests: write
-  contents: read
-
 jobs:
-  test-action:
+  build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pull-requests: write
-      repository-projects: write
-
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v2
+
       - name: Get PR number
         run: |
           echo "GitHub Event: ${{ toJson(github.event) }}"
           echo "PR Number: ${{ github.event.pull_request.number }}"
           echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-
-      - name: Run FibBot
-        id: result
-        uses: ./
-        with:
-          enable_fib: true
-          max_threshold: '100'
-        env:
-          pr_number: ${{ github.event.pull_request.number }}
-          githun_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Use PR number in subsequent steps
+        run: |
+          echo "Using PR number: ${{ env.pr_number }}"
