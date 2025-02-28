@@ -2,9 +2,10 @@ FROM rust:1.75
 
 WORKDIR /app
 
-COPY . .
+# Install and set Rust version to 1.81.0
+RUN rustup install 1.81.0 && rustup default 1.81.0
 
-# RUN echo "$1 and $2" >> $GITHUB_OUTPUT
+COPY . .
 
 RUN cargo build --release
 
