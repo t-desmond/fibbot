@@ -1,23 +1,32 @@
 name: "Run FibBot Action"
 on: [push]
 
+permissions:
+  pull-requests: write
+  contents: read
+
 jobs:
   test-action:
     runs-on: ubuntu-latest
 
     permissions:
-      actions: write
+      contents: write
       pull-requests: write
+      repository-projects: write
+
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        
       - name: Run FibBot
         id: result
         uses: ./
         with:
+          pr_number: ${{ github.event.pull_request.number }}
           enable_fib: true
           max_threshold: '100'
+          githun_token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Display output
       #   run: echo "The inputs are ${{ steps.result.outputs.enable_fib }} and ${{ steps.result.outputs.max_threshold }}"
