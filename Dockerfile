@@ -1,8 +1,6 @@
-FROM rust:1.75
+FROM rust:1.81.0
 
 WORKDIR /app
-
-RUN rustup install 1.81.0 && rustup default 1.81.0
 
 COPY . .
 
