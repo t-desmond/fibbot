@@ -19,15 +19,14 @@ async fn main() ->  Result<(), Box<dyn std::error::Error>>{
     println!("{:#?}", path);
     println!("{:?}", get_numbers::GetNumbers::extract_numbers(path));
 
-    let enable_fib = env::var("INPUT_ENABLE_FIB").unwrap_or_else(|_| "false".to_string());
-    let max_threshold = env::var("INPUT_MAX_THRESHOLD").unwrap_or_else(|_| "10".to_string());
+    let enable_fib = env::var("INPUT_ENABLE_FIB").unwrap_or_else(|_| "true".to_string());
+    let max_threshold = env::var("INPUT_MAX_THRESHOLD").unwrap_or_else(|_| "100".to_string());
     println!("Enable Fibonacci Calculation: {}", enable_fib);
     println!("Max Threshold: {}", max_threshold);
 
     if enable_fib.eq("true") {
         println!("fibbot enabled...");
-        let pr_content = "this is a simulated pr with 45 9 25";
-        let numbers = GetNumbers::extract_numbers(pr_content);
+        let numbers = GetNumbers::extract_numbers(&path);
         let numbers: Vec<BigInt> = numbers
             .into_iter()
             .filter(|x| x < &max_threshold.parse::<u32>().unwrap())
