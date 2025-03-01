@@ -40,4 +40,4 @@ jobs:
           max_threshold: '100'
         env:
           pr_number: ${{ env.pr_number }}  
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
