@@ -7,8 +7,7 @@ impl PullRequest {
         octocrab::instance().pulls(owner, repo).list_files(pr_number).await
     }
 
-    pub async fn post_comment_to_pr(pr_content: &str, pr_number: u64) -> Result<(), reqwest::Error> {
-        let repo = env::var("GITHUB_REPOSITORY").expect("GITHUB_REPOSITORY not set");
+    pub async fn post_comment_to_pr(repo: &str, pr_content: &str, pr_number: u64) -> Result<(), reqwest::Error> {
         let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
     
         let url = format!(
