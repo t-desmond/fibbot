@@ -29,28 +29,44 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Max Threshold: {}", max_threshold);
 
         // get pr content
-        let pr = PullRequest::get_pr(&owner, &repo, pr_number).await?;
-        let path = &pr.items.first().unwrap().patch.clone().unwrap();
+        let pr_files = manage_pr::PullRequest::get_pr(&owner, &repo, pr_number).await?;
+        for file in pr_files {
+            // Make sure the patch is available
+            if let Some(patch) = file.patch {
+                // Now you have a `&str` (the patch content) to pass to `extract_numbers`
+                println!("{:?}", GetNumbers::extract_numbers(&patch));
 
-        println!("Found : {:?}", get_numbers::GetNumbers::extract_numbers(path));
+                let filename = &file.filename; 
+                println!(
+                    "Found : {:?} in {}",
+                    GetNumbers::extract_numbers(&patch), filename
+                );
 
-        let extracted_numbers = GetNumbers::extract_numbers(&path);
-        
-        let fib_of_extracted_numbers: Vec<BigInt> = extracted_numbers
-            .into_iter()
-            .filter(|x| x < &max_threshold.parse::<u32>().unwrap())
-            .map(|x| Fibbonacci::fibbo(x.into()))
-            .collect();
-        println!("fib of found numbers less than {} are: {:?}", max_threshold, fib_of_extracted_numbers);
+                let extracted_numbers = GetNumbers::extract_numbers(&patch);
 
-        let comment_body = format!("fib of found numbers less than {} are: {:?}", max_threshold, fib_of_extracted_numbers);
-    
-        manage_pr::PullRequest::post_comment_to_pr(
-            github_repository.as_str(),
-            comment_body.as_str(),
-            pr_number,
-        )
-        .await?;
+                let fib_of_extracted_numbers: Vec<BigInt> = extracted_numbers
+                    .into_iter()
+                    .filter(|x| x < &max_threshold.parse::<u32>().unwrap())
+                    .map(|x| Fibbonacci::fibbo(x.into()))
+                    .collect();
+                println!(
+                    "fib of found numbers less than {} are: {:?}",
+                    max_threshold, fib_of_extracted_numbers
+                );
+
+                let comment_body = format!(
+                    "fib of found numbers less than {} are: {:?}",
+                    max_threshold, fib_of_extracted_numbers
+                );
+
+                PullRequest::post_comment_to_pr(
+                    github_repository.as_str(),
+                    comment_body.as_str(),
+                    pr_number,
+                )
+                .await?;
+            }
+        }
     } else {
         println!("fibbot disabled...")
     }
