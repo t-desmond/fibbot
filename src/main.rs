@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("fibbot enabled...");
 
         let max_threshold = env::var("INPUT_MAX_THRESHOLD").unwrap_or_else(|_| "100".to_string());
-        println!("Max Threshold: {}", max_threshold);
+        println!("Max Threshold: {}", max_threshold);   
 
         // get pr content
         let pr = PullRequest::get_pr(&owner, &repo, pr_number).await?;
