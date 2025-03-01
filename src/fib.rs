@@ -5,7 +5,7 @@ pub struct Fibbonacci;
 
 impl Fibbonacci {
     pub fn fibbo(num: BigInt) -> BigInt {
-      let mut previous_number: BigInt = 1.to_bigint().unwrap();
+      let mut previous_number: BigInt = 1.to_bigint().unwrap();   
       let mut current_number: BigInt = 0.to_bigint().unwrap();    
       
       let mut  i = 0.to_bigint().unwrap();      
