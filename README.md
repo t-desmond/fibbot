@@ -6,14 +6,6 @@ This GitHub Action computes Fibonacci numbers for numerical values found in a pu
 
 A list of Fibonacci numbers can be found [here](https://planetmath.org/listoffibonaccinumbers).
 
-## How It Works
-
-1. The action extracts numerical values from the pull request (e.g., from comments or files).
-2. It stores these values in a vector.
-3. It filters the numbers based on a threshold.
-4. Fibonacci values are calculated for numbers less than the defined threshold.
-5. The action posts the calculated Fibonacci numbers as a comment on the pull request.
-
 ## Example Usage
 
 This example demonstrates how to use the FibBot Action in a GitHub workflow:
