@@ -34,7 +34,7 @@ jobs:
         uses: t-desmond/fibbot@main
         with:
           enable_fib: true
-          max_threshold: '100'
+          max_threshold: '10'
         env:
           pr_number: ${{ env.pr_number }}  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
