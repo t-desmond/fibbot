@@ -23,7 +23,7 @@ jobs:
         id: result
         uses: t-desmond/fibbot@main
         with:
-          enable_fib: true
+          enable_fib: false
           max_threshold: '10'
         env:
           pr_number: ${{ github.event.pull_request.number }}  
