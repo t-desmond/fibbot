@@ -31,7 +31,7 @@ jobs:
           
       - name: Run FibBot
         id: result
-        uses: t-desmond/fibbot@cli-pr
+        uses: t-desmond/fibbot@main
         with:
           enable_fib: true
           max_threshold: '100'
