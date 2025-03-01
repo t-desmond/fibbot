@@ -8,7 +8,7 @@ impl Fibbonacci {
       let mut previous_number: BigInt = 1.to_bigint().unwrap();
       let mut current_number: BigInt = 0.to_bigint().unwrap();
       
-      let mut  i = 0.to_bigint().unwrap();
+      let mut  i = 0.to_bigint().unwrap();      
       while i < num {
           let previous_previous_number = previous_number;
           previous_number = current_number + &previous_previous_number;
