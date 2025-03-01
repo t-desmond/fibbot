@@ -26,7 +26,7 @@ impl PullRequest {
             .await?;
     
         if response.status().is_success() {
-            println!("✅ Comment posted successfully.");
+            println!("✅ Comment posted on pr {} successfully.", pr_number);
         } else {
             eprintln!("❌ Failed to post comment: {:?}", response.text().await?);
         }
