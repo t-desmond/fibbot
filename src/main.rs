@@ -43,7 +43,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .collect();
         println!("fib of found numbers less than {} are: {:?}", max_threshold, fib_of_extracted_numbers);
 
-        let comment_body = format!("{:?}", fib_of_extracted_numbers);
+        let comment_body = format!("fib of found numbers less than {} are: {:?}", max_threshold, fib_of_extracted_numbers);
     
         manage_pr::PullRequest::post_comment_to_pr(
             github_repository.as_str(),
