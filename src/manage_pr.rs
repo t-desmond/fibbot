@@ -13,7 +13,6 @@ impl PullRequest {
             .expect("PR_NUMBER not set")
             .parse::<u32>()
             .expect("Invalid PR_NUMBER");
-        println!("pr number: {}", pr_number);
     
         let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
     
@@ -25,7 +24,7 @@ impl PullRequest {
         let client = Client::new();
         let response = client
             .post(&url)
-            .header("Authorization", format!("{}", github_token))
+            .header("Authorization", format!("Bearer {}", github_token))
             .header("User-Agent", "FibBot")
             .header("Accept", "application/vnd.github.full+json")
             .json(&serde_json::json!({ "body": pr_content }))
