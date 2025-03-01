@@ -4,4 +4,4 @@ This action prints "Hello World" to the log.
 
 ## Example usage
 
-uses: actions/fibbot@v1
+uses: t-desmond/fibbot@cli-pr
