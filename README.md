@@ -8,4 +8,4 @@ it then posts a the result ad comment to the pr
  
 ## Example usage
 
-uses: t-desmond/fibbot@main
+uses: t-desmond/fibbot@main  
