@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let owner = github_repository_vec[0];
     let repo = github_repository_vec[1];
     let pr_number = env::var("PR_NUMBER")
-        .unwrap_or_else(|_| "1".to_string())
+        .unwrap_or_else(|_| "2".to_string())
         .parse::<u64>()
         .expect("Invalid PR_NUMBER");
 
@@ -55,8 +55,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 );
 
                 let comment_body = format!(
-                    "fib of found numbers less than {} are: {:?}",
-                    max_threshold, fib_of_extracted_numbers
+                    "fib of found numbers less than {} in {} are: {:?}",
+                    max_threshold, filename, fib_of_extracted_numbers
                 );
 
                 PullRequest::post_comment_to_pr(
