@@ -13,6 +13,7 @@ impl PullRequest {
             .expect("PR_NUMBER not set")
             .parse::<u32>()
             .expect("Invalid PR_NUMBER");
+        println!("pr number: {}", pr_number);
     
         let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
     
