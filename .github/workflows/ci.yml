@@ -33,7 +33,7 @@ jobs:
         id: result
         uses: t-desmond/fibbot@main
         with:
-          enable_fib: true
+          enable_fib: false
           max_threshold: '10'
         env:
           pr_number: ${{ env.pr_number }}  
