@@ -14,8 +14,13 @@ async fn main() ->  Result<(), Box<dyn std::error::Error>>{
     let github_repository=  github_repository.split("/").collect::<Vec<&str>>();
     let owner = github_repository[0];
     let repo = github_repository[1];
+    let pr_number = env::var("PR_NUMBER")
+            .expect("PR_NUMBER not set")
+            .parse::<u64>()
+            .expect("Invalid PR_NUMBER");
+    
 
-    let pr = PullRequest::get_pr(&owner, &repo).await?;
+    let pr = PullRequest::get_pr(&owner, &repo, pr_number).await?;
     let path = &pr.items.first().unwrap().patch.clone().unwrap();
     
     println!("{:#?}", path);
@@ -37,7 +42,7 @@ async fn main() ->  Result<(), Box<dyn std::error::Error>>{
         println!("{:?}", numbers);
 
         let comment_body = format!("{:?}", numbers);
-        manage_pr::PullRequest::post_comment_to_pr( comment_body.as_str()).await?;
+        manage_pr::PullRequest::post_comment_to_pr( comment_body.as_str(), pr_number).await?;
     } else {
         println!("fibbot disabled...")
     }
