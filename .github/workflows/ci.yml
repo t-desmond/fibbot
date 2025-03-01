@@ -1,5 +1,8 @@
 name: "Run FibBot Action"
-on: [push]
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   pull-requests: write
@@ -12,21 +15,26 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      repository-projects: write
-
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
+      - name: Get PR number
+        run: |
+          if [[ -n "${{ github.event.pull_request }}" ]]; then
+            echo "PR Number: ${{ github.event.pull_request.number }}"
+            echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          else
+            echo "No pr found."
+          fi
+          
       - name: Run FibBot
         id: result
         uses: ./
         with:
-          pr_number: ${{ github.event.pull_request.number }}
           enable_fib: true
           max_threshold: '100'
-          githun_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Display output
-      #   run: echo "The inputs are ${{ steps.result.outputs.enable_fib }} and ${{ steps.result.outputs.max_threshold }}"
+        env:
+          pr_number: ${{ env.pr_number }}  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

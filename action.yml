@@ -13,18 +13,6 @@ inputs:
     required: true
     default: "100"
 
-    pr_number:
-      description: "The number of the pull request"
-      required: true
-
-    githun_token:
-      description: "GitHub token to interact with GitHub API"
-      required: true
-
-# outputs:
-#   results:
-#     description: "prints output to logs"
-
 runs:
   using: "docker"
   image: "Dockerfile"

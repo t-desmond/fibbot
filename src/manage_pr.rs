@@ -3,17 +3,11 @@ use std::env;
 use octocrab::{models::repos::DiffEntry, Page};
 use reqwest::Client;
 impl PullRequest {
-    pub async fn get_pr(owner: &str, repo: &str) -> Result<Page<DiffEntry>, octocrab::Error> {
-        octocrab::instance().pulls(owner, repo).list_files(1).await
+    pub async fn get_pr(owner: &str, repo: &str, pr_number: u64) -> Result<Page<DiffEntry>, octocrab::Error> {
+        octocrab::instance().pulls(owner, repo).list_files(pr_number).await
     }
 
-    pub async fn post_comment_to_pr(pr_content: &str) -> Result<(), reqwest::Error> {
-        let repo = env::var("GITHUB_REPOSITORY").expect("GITHUB_REPOSITORY not set");
-        let pr_number = env::var("PR_NUMBER")
-            .expect("PR_NUMBER not set")
-            .parse::<u32>()
-            .expect("Invalid PR_NUMBER");
-    
+    pub async fn post_comment_to_pr(repo: &str, pr_content: &str, pr_number: u64) -> Result<(), reqwest::Error> {
         let github_token = env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN not set");
     
         let url = format!(
