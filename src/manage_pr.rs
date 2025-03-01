@@ -16,7 +16,7 @@ impl PullRequest {
         );
     
         let client = Client::new();
-        let response = client
+        let response = client   
             .post(&url)
             .header("Authorization", format!("Bearer {}", github_token))
             .header("User-Agent", "FibBot")
