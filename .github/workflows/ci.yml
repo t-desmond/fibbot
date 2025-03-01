@@ -19,6 +19,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Run tests
+        run: cargo test
+        
       - name: Run FibBot
         id: result
         uses: t-desmond/fibbot@main
